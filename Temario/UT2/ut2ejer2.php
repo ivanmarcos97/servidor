@@ -11,7 +11,7 @@
 $filas = 4;
 $simb="*";
 for($i=0;$i<$filas;$i++){
-for($y=0;$y<$i;$y++){
+for($y=-1;$y<$i;$y++){
     echo "$simb";
 }
 echo "<br/>";

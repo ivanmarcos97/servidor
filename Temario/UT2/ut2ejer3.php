@@ -7,17 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-$uno=34;
-$dos=56;
-$tres=57;
-echo "$uno $dos $tres";
-if($uno>$dos && $uno>$tres){
-    echo "$uno es el mayor";
-}elseif($dos>$uno && $dos>$tres){
-        echo "$dos es el mayor";
-    }else{
-        echo "$tres es el mayor";}
+<?php
+$filas = 4;
+$simb=0;
+for($i=0;$i<$filas;$i++){
+for($y=-1;$y<$i;$y++){
+    $simb++;
+    echo "$simb";
+}
+echo "<br/>";
+}
     ?>
 </body>
 </html>
