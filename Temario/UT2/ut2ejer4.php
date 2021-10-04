@@ -8,16 +8,9 @@
 </head>
 <body>
     <?php
-$uno=34;
-$dos=56;
-$tres=57;
-echo "$uno $dos $tres";
-if($uno>$dos && $uno>$tres){
-    echo "$uno es el mayor";
-}elseif($dos>$uno && $dos>$tres){
-        echo "$dos es el mayor";
-    }else{
-        echo "$tres es el mayor";}
+$val=3;
+for($i=0;$i<11;$i++){
+echo "$i x $val = ".$i*$val." <br/>";}
     ?>
 </body>
 </html>
