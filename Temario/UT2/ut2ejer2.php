@@ -9,10 +9,10 @@
 <body>
     <?php
 $filas = 4;
-$simb="*";
+$simb="* ";
 for($i=0;$i<$filas;$i++){
 for($y=-1;$y<$i;$y++){
-    echo "$simb";
+    echo $simb;
 }
 echo "<br/>";
 }
