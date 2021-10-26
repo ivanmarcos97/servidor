@@ -8,9 +8,11 @@
 </head>
 <body>
     <?php
-    $alumnos=array("m1"=>array(7,5),
-    "m2"=>array(8,9),"m3"=>array(9,6),
-    "m4"=>array(8,9),"m5"=>array(8,6));
+    $alumnos=array('123'=>array('1eval'=>6,'2eval'=>8),
+                    '970'=>array('1eval'=>8,'2eval'=>7),
+                    '754'=>array('1eval'=>7,'2eval'=>9),
+                    '435'=>array('1eval'=>9,'2eval'=>8),
+                    '125'=>array('1eval'=>9,'2eval'=>7));
 
     foreach($alumnos as $matriculas=>$valor){
         foreach($valor as $notas){
