@@ -2,16 +2,15 @@
 class Alumno
 {
     private $nmatri;
-    private $tasamatri = 2;
+    const tasamatri = 2;
     private $nombre;
     private $edad;
 
-    function __construct($nmatri, $tasamatri, $nombre, $edad)
+    function __construct($nmatri,  $nombre, $edad)
     {
-        $this->$nmatri = $nmatri;
-        $this->$tasamatri = $tasamatri;
-        $this->$nombre = $nombre;
-        $this->$edad = $edad;
+        $this->nmatri = $nmatri;
+        $this->nombre = $nombre;
+        $this->edad = $edad;
     }
     function __get($tasamatri)
     {
@@ -19,9 +18,10 @@ class Alumno
     }
     function calcula()
     {
-
-        if (self::$edad < 18) {
-            self::$tasamatri = 0;
+        $importe = 0;
+        if ($this->edad > 18) {
+            $importe = self::tasamatri;
         }
+        return "<br> El importe de la matricula de " . $this->nombre . " es: " . $importe;
     }
 }
