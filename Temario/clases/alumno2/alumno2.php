@@ -2,22 +2,23 @@
 class Alumno
 {
     const CICLO = "DAW";
-    private $calificacionfinal;
-    private $nombre;
-    private $edad;
+    protected $nombre;
+    protected $calificacionfinal;
+    protected $edad;
 
-    function __construct($calificacionfinal,  $nombre, $edad)
+    function __construct($nombre, $edad, $calificacionfinal)
     {
-        $this->calificacionfinal = $calificacionfinal;
+
         $this->nombre = $nombre;
         $this->edad = $edad;
+        $this->calificacionfinal = $calificacionfinal;
     }
     function supera_curso()
     {
         if ($this->calificacionfinal >= 5) {
-            echo "apto";
+            return "El alumno $this->nombre supera el primer curso";
         } else {
-            echo "no apto";
+            return "no supera el primer curso";
         }
     }
 }
