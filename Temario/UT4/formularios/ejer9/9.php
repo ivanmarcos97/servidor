@@ -14,6 +14,9 @@ require_once("../../../../libreriaphp/calcu.php");
             color: blue;
         }
 
+
+
+
         input {
             color: #318aac !important;
             font-size: 20px;
