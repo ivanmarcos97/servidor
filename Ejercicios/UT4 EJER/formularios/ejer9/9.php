@@ -1,5 +1,5 @@
 <?php
-require_once("../../../../libreriaphp/calcu.php");
+require_once("./servidor/libreriaphp/FUNCIONES.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
