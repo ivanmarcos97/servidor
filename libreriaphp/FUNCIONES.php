@@ -26,11 +26,11 @@ function calculadora()
 function contiene()
 {
     if (isset($_POST['enviar'])) {
-        $str = $_POST['nombre'];
+        $str = $_POST['frase'];
         $char = $_POST['caracter'];
         $esta = false;
         if (strpos($str, $char)) {
-            return $char . " está en " . $str;
+            return $char . "<br> está en<br> " . $str;
             exit;
         } else {
             return $char . " no está en " . $str;
@@ -48,5 +48,18 @@ function login()
         } else {
             return "Error";
         }
+    }
+}
+function validarnum($num)
+{
+
+    $options = array(
+        'options' => array(
+            'min_range' => 0,
+            'max_range' => 100,
+        )
+    );
+    if (filter_var($num, FILTER_VALIDATE_INT, $options) == FALSE) {
+        echo "Este entero no es válido (entre 0 y 100).\n";
     }
 }

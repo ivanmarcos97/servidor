@@ -1,5 +1,5 @@
 <?php
-require_once("./servidor/libreriaphp/FUNCIONES.php");
+require_once("../../../libreriaphp/FUNCIONES.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ require_once("./servidor/libreriaphp/FUNCIONES.php");
     <?php
     echo login();
     ?>
-    <form action="" method="$_POST">
+    <form action="" method="post">
         <fieldset>
             <label for="a">Nombre:</label>
             <input type="text" name="usu" id="a" required><br>
