@@ -9,6 +9,7 @@ function calculadora()
         switch ($signo) {
             case '+':
                 $r = $op1 + $op2;
+                validarnum($r);
                 break;
             case '-':
                 $r = $op1 - $op2;
