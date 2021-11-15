@@ -1,5 +1,5 @@
 <?php
-function calculadora();
+function calculadora()
 {
     if (isset($_POST['enviar'])) {
         $r = 0;
