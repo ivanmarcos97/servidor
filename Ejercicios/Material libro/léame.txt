@@ -1,0 +1,6 @@
+﻿Para probar estos diferentes ejemplos, puede copiar el contenido de este 
+directorio en un directorio del árbol de su servidor web.
+A continuación, puede acceder al resumen general a través de una URL como:
+http://servidor/directorio/index.php 
+Además, el directorio "sql" contiene los script que permiten crear las tablas
+utilizadas en los diferentes ejemplos.

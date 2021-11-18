@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Entrada</title>
+  </head>
+  <body>
+    <form action="09-form-entrada-matriz.php" method="post">
+    <div>
+      Nombre:
+      <input type="text" name="entrada[nombre]" value=""
+           size="20" maxlength="20" />
+      Contraseña:
+      <input type="password" name="entrada[contrasena]" value=""
+           size="20" maxlength="20" />
+      <br />Sexo:
+      <input type="radio" name="entrada[sexo]" value="M" /> Masculino
+      <input type="radio" name="entrada[sexo]" value="F" /> Feminino
+      <input type="radio" name="entrada[sexo]" value="?"
+                              checked="checked" /> No lo sé
+      <br />Foto:
+      <input type="file" name="entrada[foto]" value="" size="50" />
+      <br />Colores favoritos:
+      <input type="checkbox" name="entrada[colores][azul]" />Azul
+      <input type="checkbox" name="entrada[colores][blanco]" />Blanco
+      <input type="checkbox" name="entrada[colores][rojo]" />Rojo
+      <input type="checkbox" name="entrada[colores][ninguno]"
+                                  checked="checked" />No lo sé
+      <br />Idioma:
+      <select name="entrada[idioma]">
+        <option value="E" selected="selected" >Español</option>
+        <option value="F">Francés</option>
+        <option value="I">Italiano</option>
+      </select>
+      <br />Fruta favorita:<br />
+      <select name="entrada[frutas][]" multiple="multiple" size="8">
+        <option value="A">Albaricoques</option>
+        <option value="C">Cerezas</option>
+        <option value="F">Fresas</option>
+        <option value="M">Melocotones</option>
+        <option value="?" selected="selected">
+                          No lo sé</option>
+      </select>
+      <br />Comentarios:<br />
+      <textarea name="entrada[comentarios]"
+                          rows="4" cols="50"></textarea>
+      <br />
+      <input type="hidden" name="entrada[invisible]" value="123" />
+      <br />
+      <input type="submit" name="enviar" value="OK" />
+      <input type="image" name="validar" src="../imagenes/validar.png" />
+      <input type="reset" name="borrar" value="Borrar" />
+      <input type="button" name="action" value="No hacer nada" />
+    </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<artículos>
+	<artículo código="A1" color="amarillo">
+		<identificador>1</identificador>
+		<texto>Albaricoques</texto>
+		<precio>35.5</precio>
+	</artículo>
+	<artículo código="A2" color="rojo">
+		<identificador>2</identificador>
+		<texto>Cerezas</texto>
+		<precio>48.9</precio>
+	</artículo>
+	<artículo código="A3" color="rojo">
+		<identificador>3</identificador>
+		<texto>Fresas</texto>
+		<precio>29.95</precio>
+	</artículo>
+	<artículo código="A4" color="amarillo">
+		<identificador>4</identificador>
+		<texto>Melocotones</texto>
+		<precio>37.2</precio>
+	</artículo>
+</artículos>
