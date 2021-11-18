@@ -32,3 +32,16 @@ function valida_operando2(&$ope2, &$e)
         $e = "Error. El dato esta vacio";
     }
 }
+
+function valida_operador(&$operador, &$e)
+{
+    if (!empty($_POST["operador"])) {
+        if ($_POST["operador"] == "+" OR $_POST["operador"] == "-" OR $_POST["operador"] == "*" OR $_POST["operador"] == "/") {
+            $operador = $_POST["operador"];
+        } else {
+            $e = "Error. Debe introducir un signo correcto";
+        }
+    } else {
+        $e = "Error. El dato esta vacio";
+    }
+}

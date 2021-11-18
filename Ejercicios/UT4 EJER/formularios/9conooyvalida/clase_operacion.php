@@ -27,6 +27,6 @@ class Operacion
                 $r = $this->ope1 / $this->ope2;
                 break;
         }
-        return "El resultado es" . $r;
+        return "El resultado es " . $r;
     }
 }
