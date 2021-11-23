@@ -22,8 +22,9 @@ $errores['errorpre']="";
     if (isset($_POST["enviar"])) {
         valida_precio($pre, $errores["errorpre"]);
         if ((!empty($tit)) && (!empty($pre)) && (!empty($fecha))) {
-            $lib1 = new Libro($tit, $pre, $fecha);
+            $lib1 = new Libro($_POST ["tit"], $pre, $_POST ["fecha"]);
             echo $lib1->calculodescuento();
+            echo $lib1->condescuento($descuento);
             exit;
         }
     }
