@@ -1,14 +1,23 @@
 <?php
 //ini_set("display_errors", 0);
 try {
-    //throw new Exception("<br> Variable no declarada<br> ");
-    echo $a;
+    //$a = 1;
+    if (!isset($a)) {
+
+        throw new Exception(" Variable no declarada ");
+    } else {
+        echo $a;
+    }
 } catch (Exception $e) {
-    echo   $e->getMessage();
+    echo   $e->getMessage() . "<br>";
 }
 try {
-    throw new Exception("<br> no se encuentra el archivo<br> ");
-    include_once("./nomevasaencontrar.php");
+    if (!file_exists("./nomevasaencontrar.php")) {
+
+        throw new Exception("No se encuentra el archivo ");
+    } else {
+        include_once("./nomevasaencontrar.php");
+    }
 } catch (Exception $e) {
-    echo  $e->getMessage();
+    echo  $e->getMessage() . "<br>";
 }
