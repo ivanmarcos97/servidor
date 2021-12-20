@@ -14,11 +14,7 @@
 </head>
 
 <body>
-    <?php
-    session_start();
-    $_SESSION["palabra"] = $_POST["palabra"];
 
-    ?>
     <form action="tercerapagina.php" target="" method="post">
         <fieldset>
 
