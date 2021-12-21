@@ -17,6 +17,7 @@
     <?php
     session_start();
     $_SESSION["numero"] = random_int(1, 10);
+    echo $_SESSION["numero"];
 
     ?>
     <form action="segundapagina.php" target="" method="post">
