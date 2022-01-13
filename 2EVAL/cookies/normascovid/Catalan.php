@@ -14,13 +14,12 @@ setcookie("ncovid", "Catalan", time() + 60);
 <body>
     <h1>Normas en Catalan</h1>
     <ul>
-        <li>uso mascarilla
-            obligatorio </li>
-        <li>hidrogel al acceder al centro</li>
-        <li>respetar distancia de seguridad</li>
-        <li> ventilación de las aulas</li>
-        <li>frecuente
-            lavado de manos</li>
+        <li>ús mascareta obligatori</li>
+        <li> hidrogel en accedir al centre</li>
+        <li> respectar distància de seguretat</li>
+        <li> ventilació de les aules</li>
+        <li> freqüent</li>
+        <li> rentat de mans</li>
     </ul>
 </body>
 

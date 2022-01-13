@@ -14,13 +14,12 @@ setcookie("ncovid", "Ingles", time() + 60);
 <body>
     <h1>Normas en Ingles</h1>
     <ul>
-        <li>uso mascarilla
-            obligatorio </li>
-        <li>hidrogel al acceder al centro</li>
-        <li>respetar distancia de seguridad</li>
-        <li> ventilación de las aulas</li>
-        <li>frecuente
-            lavado de manos</li>
+        <li>use of a mandatory mask</li>
+        <li> hydrogel when accessing the center</li>
+        <li> respect safety distance</li>
+        <li> classroom ventilation</li>
+        <li> frequent</li>
+        <li> handwashing</li>
     </ul>
 </body>
 
