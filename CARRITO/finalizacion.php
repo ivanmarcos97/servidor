@@ -18,7 +18,7 @@
 
         a {
             font-size: 2em;
-            background-color: lightgreen;
+            background-color: lightblue;
             border: 2px solid black;
             border-radius: 10px;
             padding: 5px;
@@ -33,6 +33,36 @@
 </head>
 
 <body>
+
+
+
+
+    <table>
+        <tr>
+            <td>Denominación</td>
+            <td>Unidades</td>
+        </tr>
+
+        <?php
+
+        $prod =    $_COOKIE['productosel'];
+        $unid =   $_COOKIE["unidadessel"];
+
+
+        echo '<tr>';
+        echo '<td>' . $prod . '</td>';
+        echo '<td>' . $unid . '</td>';
+        echo '</tr>';
+
+
+
+
+
+        ?>
+
+
+    </table>
+
 
     <a href="pago.php">Pagar</a>
     <a href="Solicitud_producto.php">Inicio</a>

@@ -1,27 +1,27 @@
 <?php
 
-if (!isset($_COOKIE["carro"])) {
-    setcookie("carro", "1", time() + 300);
-    if (isset($_POST['continuar'])) {
-        if ((!empty($_POST['prod'])) && (!empty($_POST['unid']))) {
-            $datos = $_POST['prod'] . $_POST['unid'];
-        }
+
+
+if (isset($_POST['continuar'])) {
+    if (!isset($_COOKIE['productosel'])) {
+        setcookie('productosel', $_POST['producto'], time() + 160);
+    } else {
+        $prod = $_COOKIE['productosel'];
+        $prod .= $_POST['producto'] . "<br>";
+        setcookie('productosel', $prod, time() + 160);
     }
-} else {
-    $contador = (int)$_COOKIE["visitas"];
-    $contador++;
-    echo "Este es tu " . $contador . " acceso";
-    //actualizal cookie
-    setcookie("visitas", $contador, time() + 300);
+    if (!isset($_COOKIE['unidadessel'])) {
+        setcookie('unidadessel', $_POST['unidades'], time() + 160);
+    } else {
+
+        $unid = $_COOKIE['unidadessel'];
+        $unid .= $_POST['unidades'] . "<br>";
+        setcookie('unidadessel', $unid, time() + 160);
+    }
+    header('location: finalizacion.php');
 }
-
-
-
-
-die("fin de la aplicación");
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@ die("fin de la aplicación");
 
         #boton {
             font-size: 2em;
-            background-color: lightgreen;
+            background-color: lightblue;
             border: 2px solid black;
             border-radius: 10px;
             padding: 5px;
@@ -55,12 +55,17 @@ die("fin de la aplicación");
 </head>
 
 <body>
-    <form action="./finalizacion.php">
+
+
+
+
+
+    <form action="" method="POST">
         <label for="prod">Producto:</label>
-        <input type="text" id="prod" name="prod">
+        <input type="text" id="prod" name="producto">
         <label for="unid">Unidades:</label>
-        <input type="text" id="unid" name="unid"><br><br>
-        <input type="submit" value="Continuar" id="boton">
+        <input type="text" id="unid" name="unidades"><br><br>
+        <input type="submit" value="continuar" id="boton" name="continuar">
     </form>
 </body>
 
