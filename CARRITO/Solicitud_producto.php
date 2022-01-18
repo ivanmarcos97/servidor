@@ -1,9 +1,25 @@
 <?php
 
-if (isset($_POST['continuar'])) {
-
-    die("fin de la aplicación");
+if (!isset($_COOKIE["carro"])) {
+    setcookie("carro", "1", time() + 300);
+    if (isset($_POST['continuar'])) {
+        if ((!empty($_POST['prod'])) && (!empty($_POST['unid']))) {
+            $datos = $_POST['prod'] . $_POST['unid'];
+        }
+    }
+} else {
+    $contador = (int)$_COOKIE["visitas"];
+    $contador++;
+    echo "Este es tu " . $contador . " acceso";
+    //actualizal cookie
+    setcookie("visitas", $contador, time() + 300);
 }
+
+
+
+
+die("fin de la aplicación");
+
 
 ?>
 
