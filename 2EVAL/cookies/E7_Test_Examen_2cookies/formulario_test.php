@@ -1,21 +1,19 @@
 <?php
-if (isset($_POST['enviar']))
-		{
-		if (isset($_POST['test']))
-			if ($_POST["test"]=="realizado")
-					{
-					$datos=explode("-",$_COOKIE['actividades']);
-					$datos[0]="realizado";
-					$valorcookie=implode("-",$datos);
-					setcookie("actividades", $valorcookie, time() + 300);	
-					}
-		die("fin de la aplicación");
-		}	
+if (isset($_POST['enviar'])) {
+	if (isset($_POST['test']))
+		if ($_POST["test"] == "realizado") {
+
+			$valorcookie = "realizado";
+			setcookie("test", $valorcookie, time() + 300);
+		}
+	die("fin de la aplicación");
+}
 ?>
 
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,6 +30,7 @@ if (isset($_POST['enviar']))
 		<label><input type="radio" name="test" value="norealizado">No realizado</label><br>
 		<br><br>
 		<input type="submit" name="enviar">
-	</form> 	
-</body> 
+	</form>
+</body>
+
 </html>
