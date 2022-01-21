@@ -6,12 +6,16 @@ if (isset($_POST['enviar'])) {
         $usuario .= "-" . $_POST['clave'] . ",";
 
         setcookie('login', $usuario, time() + 60);
-        echo "Bienvenido " . $usuarioactual;
-        exit;
+        $usuarioactual .= "-" . "0";
+        setcookie("usuarioactual", $usuarioactual, time() + 60);
+        //echo "Bienvenido " . $usuarioactual[0];//falta el explode
+        header("location: principal.php");
     } else {
 
         if ((!empty($_POST['usuario'])) && (!empty($_POST['clave']))) {
+
             $prueba = false;
+            $repetido = false;
             $usuactual = "";
             $usuario = $_COOKIE["login"];
             $usuarioYContraseña = explode(",", $usuario);
@@ -19,21 +23,51 @@ if (isset($_POST['enviar'])) {
                 $uycseparados = explode("-", $uyc);
 
                 for ($i = 0; $i < count($uycseparados); $i++) {
+                    if ($_POST['usuario'] == $uycseparados[$i] && $_POST['clave'] != $uycseparados[$i + 1]) {
+                        $repetido = true;
+                    }
                     if ($_POST['usuario'] == $uycseparados[$i] && $_POST['clave'] == $uycseparados[$i + 1]) {
                         $prueba = true;
                         $usuactual = $uycseparados[$i];
                     }
                 }
             }
-            if ($prueba == true) {
-                setcookie('login', $usuario, time() + 60);
-                echo "Bienvenido de nuevo " . $usuactual;
+            if ($repetido == false) {
+                if ($prueba == true) {
+                    if (isset($_COOKIE['usuarioactual'])) {
+                        $nombre = explode("-", $_COOKIE['usuarioactual']);
+                        if ($usuactual == $nombre[0]) {
+
+                            header("location: principal.php");
+                        } else {
+                            $usuactual .= "-" . "0";
+                            setcookie("usuarioactual", $usuactual, time() + 60);
+
+                            setcookie('login', $usuario, time() + 60);
+
+                            //echo "Bienvenido de nuevo " . $usuactual[0];//falta el explode
+                            header("location: principal.php");
+                        }
+                    } else {
+                        $usuactual .= "-" . "0";
+                        setcookie("usuarioactual", $usuactual, time() + 60);
+
+                        setcookie('login', $usuario, time() + 60);
+
+                        //echo "Bienvenido de nuevo " . $usuactual[0];//falta el explode
+                        header("location: principal.php");
+                    }
+                } else {
+                    $usuario .= $_POST['usuario'];
+                    $newusu = $_POST['usuario'] . "-" . "0";
+                    $usuario .= "-" . $_POST['clave'] . ",";
+                    setcookie('login', $usuario, time() + 60);
+                    setcookie("usuarioactual", $newusu, time() + 60);
+                    // echo "$newusu[0] Te  has registrado con exito";//falta el explode
+                    header("location: principal.php");
+                }
             } else {
-                $usuario .= $_POST['usuario'];
-                $newusu = $_POST['usuario'];
-                $usuario .= "-" . $_POST['clave'] . ",";
-                setcookie('login', $usuario, time() + 60);
-                echo "$newusu Te  has registrado con exito";
+                echo "El usuario o la contraseña no son correctos";
             }
         }
     }
@@ -82,8 +116,8 @@ if (isset($_POST['enviar'])) {
         <p align="center">
         <h1> Inicio de sesión </h1>
         <form action="" method="post">
-            Usuario: <input type="text" name="usuario" placeholder="Introducca su Usuario" required> <br>
-            Contraseña: <input type="password" name="clave" placeholder="Introducca su Contraseña" required>
+            Usuario: <input type="text" name="usuario" placeholder="Introduzca su Usuario" required> <br>
+            Contraseña: <input type="password" name="clave" placeholder="Introduzca su Contraseña" required>
 
             <input id="login" type="submit" name="enviar" value="LOGIN">
         </form>

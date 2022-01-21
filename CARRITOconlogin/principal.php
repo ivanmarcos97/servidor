@@ -1,4 +1,6 @@
 <?php
+$usuactual = explode("-", $_COOKIE["usuarioactual"]);
+echo "<p>Sesion de " . $usuactual[0] . " </p>";
 
 ?>
 <!DOCTYPE html>

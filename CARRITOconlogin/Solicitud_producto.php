@@ -83,7 +83,7 @@ if (isset($_POST['continuar'])) {
 
         </select>
         <label for="unid">Unidades:</label>
-        <input type="number" id="unid" name="unidades"><br><br>
+        <input type="number" id="unid" name="unidades" required><br><br>
         <input type="submit" value="continuar" id="boton" name="continuar">
     </form>
 </body>
