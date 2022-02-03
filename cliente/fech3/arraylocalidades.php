@@ -16,4 +16,3 @@ if ($localidad!==""){
     }
 }
 echo $esta;
-?>
