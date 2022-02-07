@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-
   <body>
     <script>
-      fetch("./hola.txt")
+      fetch("user.json")
         // .a continuación, se ejecuta cuando el servidor remoto responde
         .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          } else {
+            alert("Error de conexion. status: " + response.status);
+          }
           // response.text() devuelve una nueva promesa que se resuelve con el texto de respuesta completo
           // cuando se carga
-          if (response.ok) {
-            return response.text();
-          } else {
-            return "error de conexion. status " + response.status;
-          }
+          return response.text();
         })
         .then(function (text) {
           // ...y aquí está el contenido del archivo remoto
