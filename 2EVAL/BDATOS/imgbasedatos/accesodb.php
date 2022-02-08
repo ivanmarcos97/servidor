@@ -34,7 +34,7 @@
     mysqli_close($conexion);
     ?>
     <div>
-        <img src="D:/ivanm/servidor/2EVAL/BDATOS/imgbasedatos/uploads/<?php echo $ruta_foto; ?>" alt="Imagen obra de arte" width="25%">
+        <img src="./uploads/<?php echo $ruta_foto; ?>" alt="Imagen obra de arte" width="25%">
     </div>
 </body>
 
