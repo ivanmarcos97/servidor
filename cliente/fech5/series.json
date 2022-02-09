@@ -1,0 +1,31 @@
+{
+    "series": [{
+            "titulo": "Breaking Bad",
+            "plataforma": "Netflix",
+            "director": " Bryan Cranston.",
+            "año": "2008",
+            "terminada": "Si"
+        },
+        {
+            "titulo": "Arcane",
+            "plataforma": "Netflix",
+            "director": "Caitlyn",
+            "año": "2021",
+            "terminada": "No"
+        },
+        {
+            "titulo": "Sex Education",
+            "plataforma": "Netflix",
+            "director": "Rorro.",
+            "año": "2021",
+            "terminada": "No"
+        },
+        {
+            "titulo": "Prison Break",
+            "plataforma": "Disney +",
+            "director": "Michael Scofield",
+            "año": "2017",
+            "terminada": "Si"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <table id="tabla"></table>
+  <body>
+    <script>
+      let fichero = "./series.json";
+      fetch(fichero)
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new error(
+              "Error " +
+                response.status +
+                " al intentar acceder al fichero " +
+                fichero
+            );
+          }
+        })
+        .then(function (json) {
+          let tabla = document.getElementById("tabla");
+          let ths = document.createElement("tr");
+          ths.textContent =
+            "<th>Titulo</th><th>plataforma</th><th>director</th><th>año</th><th>terminada</th>";
+          for (let i = 0; i < 4; i++) {
+            let fila = document.createElement("tr");
+            tabla.append(fila);
+            let celdati = document.createElement("td");
+            let celdapla = document.createElement("td");
+            let celdadi = document.createElement("td");
+            let celdaan = document.createElement("td");
+            let celdater = document.createElement("td");
+            celdati.append(json.series[i].titulo);
+            celdapla.append(json.series[i].plataforma);
+            celdadi.append(json.series[i].director);
+            celdaan.append(json.series[i].año);
+            celdater.append(json.series[i].terminada);
+
+            fila.append(celdati);
+            fila.append(celdapla);
+            fila.append(celdadi);
+            fila.append(celdaan);
+            fila.append(celdater);
+          }
+        })
+        .catch(function (error) {
+          alert("Se ha producido un error: " + error.message);
+        });
+    </script>
+  </body>
+</html>

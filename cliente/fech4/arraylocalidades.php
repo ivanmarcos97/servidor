@@ -1,19 +1,9 @@
-
-
 <?php
-$json = file_get_contents('php://input');
-$data = json_decode($json);
-
-$localidad = $data->localidad;
-
-echo $localidad;
-
-
 //Array de localidades
 $a = array("Burgos", "Gumiel", "Miranda", "Lerma", "Aranda", "Hacinas", "Salas", "Frías", "Vivar", "Villadiego");
 
 //Tomamos el valor del input procedente de la URL
-$localidad = $_REQUEST["localidad"];
+$localidad = $_POST["loca"];
 $esta = "N";
 
 if ($localidad !== "") {

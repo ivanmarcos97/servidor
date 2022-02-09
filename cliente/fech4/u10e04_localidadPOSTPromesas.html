@@ -1,49 +1,44 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-
   <body>
-    <div>
-      <input type="text" name="localidad" id="localidad" />
-      <button id="mostrar">Mostrar contenido</button>
-    </div>
-    <textarea name="contenido" id="contenido" cols="30" rows="10"></textarea>
+    <form id="formu" action="" method="post">
+      <p>
+        <label for="loca">Localidad:</label>
 
+        <input type="text" name="loca" id="loca" />
+        <span id="loca" style="color: red"></span>
+      </p>
+      <button type="submit" id="enviar">Enviar</button>
+    </form>
+    <div id="resultado"></div>
     <script>
-            document.addEventListener("DOMContentLoaded", inicio);
-            function inicio() {
-              // EVENTO PARA EL BUTTON
-              let botonMostrar = document.getElementById("mostrar");
-              botonMostrar.addEventListener("click", mostrarArchivo);
-            }
+      let localidad = document.getElementById("loca");
+      let boton = document.getElementById("enviar");
+      boton.addEventListener("click", comprobar);
 
-            function mostrarArchivo(evento) {
-              let campolocalidad = document.getElementById("localidad");
-              //let url = "arrayLocalidades.php?localidad=" + campolocalidad.value;
-              let base =
-                "http://localhost/servidor/cliente/ejemplos-fetch/3-llamada-get-parametrosTexto";
-              let url = new URL(base + "/arrayLocalidades.php");
-              url.searchParams.set("localidad", campolocalidad.value);
+      async function comprobar(e) {
+        e.preventDefault();
 
+        let response = await fetch("arraylocalidades.php", {
+          method: "POST",
+          body: new FormData(formu),
+        });
 
-      };
-
-       let localidad= campolocalidad.value
-      let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(localidad)
-      });
-
-      let result = await response.json();
-      alert(result.message);
+        let result = await response.text();
+        let div = document.getElementById("resultado");
+        if (result == "N") {
+          div.style.color = "red";
+        } else if (result == "S") {
+          div.style.color = "green";
+        }
+        div.innerHTML = result;
+      }
     </script>
   </body>
 </html>
