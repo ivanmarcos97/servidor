@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        border: black 2px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="tabla"></table>
+    <script>
+      let fichero = "portafolio.json";
+      let xhr = new XMLHttpRequest();
+
+      xhr.open("GET", fichero);
+
+      xhr.responseType = "json";
+
+      xhr.send();
+
+      xhr.onload = function () {
+        if (xhr.status != 200) {
+          alert(`Error ${xhr.status}: ${xhr.statusText}`);
+        } else {
+          objeto = xhr.response;
+          let tabla = document.getElementById("tabla");
+          for (let i = 0; i < 3; i++) {
+            let fila = document.createElement("tr");
+            tabla.append(fila);
+            let celdati = document.createElement("td");
+            let celdafe = document.createElement("td");
+            let celdate = document.createElement("td");
+            celdati.append(objeto.fechas[i].titulo);
+            celdafe.append(objeto.fechas[i].fecha);
+            celdate.append(objeto.fechas[i].texto);
+
+            fila.append(celdati);
+            fila.append(celdafe);
+            fila.append(celdate);
+          }
+        }
+        xhr.onerror = function () {
+          alert(`Error de red`);
+        };
+      };
+    </script>
+  </body>
+</html>

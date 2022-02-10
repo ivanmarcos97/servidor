@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post" id="formulario">
+      <p>
+        <label for="url">URL:</label>
+        <input type="text" name="url" id="url" /><br />
+        <button type="button" id="Mostrar">Mostrar contenido</button><br />
+        <textarea id="area"> </textarea>
+      </p>
+    </form>
+    <script>
+      let f = document.forms.formulario;
+      f.url.value = window.location;
+      let area = document.getElementById("area");
+      f.Mostrar.addEventListener("click", ejecutar);
+      function ejecutar() {
+        let fichero = f.url.value;
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("GET", fichero);
+
+        xhr.send();
+
+        xhr.onload = function () {
+          if (xhr.status != 200) {
+            alert(`Error ${xhr.status}: ${xhr.statusText}`);
+          } else {
+            texto = xhr.response;
+            area.innerHTML = texto;
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
