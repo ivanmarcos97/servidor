@@ -12,7 +12,7 @@ class Pelicula
         $resultado = $conect->query($sql);
         $result = "";
         while ($fila = $resultado->fetch_array()) {
-            $result .= $fila["titulo"] . '<br>';
+            $result .= $fila["titulo"] . ';';
         }
         return $result;
     }

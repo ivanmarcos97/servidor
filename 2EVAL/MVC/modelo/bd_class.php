@@ -13,8 +13,8 @@ class Conexion
         }
     }
 
-    public function __get($z)
+    public function __get($atrib)
     {
-        return ($this->$z);
+        return ($this->bd_conect);
     }
 }
