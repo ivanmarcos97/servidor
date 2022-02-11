@@ -38,4 +38,16 @@ class Actor
         }
         return $result;
     }
+
+    public function query_id_Actor($conect)
+    {
+        $nombre_actor = htmlspecialchars($_POST['actor']);
+        $sql = "Select id_actor from actores where nombre_apellidos='$nombre_actor'";
+        $resultado = $conect->query($sql);
+        $result = "";
+        while ($fila = $resultado->fetch_array()) {
+            $result .= $fila[0];
+        }
+        return $result;
+    }
 }

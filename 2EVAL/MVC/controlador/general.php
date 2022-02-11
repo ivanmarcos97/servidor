@@ -25,5 +25,6 @@ switch ($_POST['consulta']) {
         require_once("../vista/elegir_nacionalidad.php");
         break;
     case '4':
+        require_once("../vista/elegir_actor.php");
         break;
 }
