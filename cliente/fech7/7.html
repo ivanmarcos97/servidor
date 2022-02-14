@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post" id="formulario">
+      <label for="teatro">Seleccione el teatro:</label>
+      <select name="teatro" id="teatro"></select>
+      <p>
+        <label for="tit">Titulo:</label>
+        <input type="text" name="tit" id="tit" /><br />
+        <label for="pre">Precio:</label>
+        <input type="text" name="pre" id="pre" /><br />
+        <label for="sin">Sinopsis:</label>
+        <input type="text" name="sin" id="sin" /><br />
+        <button type="button" id="Mostrar">Mostrar contenido</button><br />
+        <textarea id="area"> </textarea>
+      </p>
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", programa);
+
+      function programa() {
+        let arrteatros = new Array();
+        let tea = document.getElementById("teatro");
+        tea.addEventListener("change", mostrardatos);
+
+        let fichero = "./json_teatro/teatros.json";
+        let obras = "./json_teatro/cartelera.json";
+        fetch(fichero)
+          .then(function (response) {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new error(
+                "Error " +
+                  response.status +
+                  " al intentar acceder al fichero " +
+                  fichero
+              );
+            }
+          })
+          .then(function (json) {
+            for (let i = 0; i < json.length; i++) {
+              arrteatros[i] = json[i].teatro;
+              let option = document.createElement("option");
+              option.innerHTML = arrteatros[i];
+              tea.append(option);
+            }
+            mostrardatos();
+          })
+          .catch(function (error) {
+            alert("Se ha producido un error: " + error.message);
+          });
+
+        function mostrardatos() {
+          let tit = document.getElementById("tit");
+          let pre = document.getElementById("pre");
+          let sin = document.getElementById("sin");
+
+          fetch(obras)
+            .then(function (response) {
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new error(
+                  "Error " +
+                    response.status +
+                    " al intentar acceder al fichero " +
+                    obras
+                );
+              }
+            })
+            .then(function (json) {
+              for (let i = 0; i < json.obras.length; i++) {
+                if (tea.value == json.obras[i].teatro) {
+                  tit.value = json.obras[i].titulo;
+                  pre.value = json.obras[i].precio;
+                  sin.value = json.obras[i].sinopsis;
+                }
+              }
+            })
+            .catch(function (error) {
+              alert("Se ha producido un error: " + error.message);
+            });
+        }
+      }
+    </script>
+  </body>
+</html>

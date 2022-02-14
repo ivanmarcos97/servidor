@@ -22,7 +22,8 @@
       let boton = document.getElementById("enviar");
       boton.addEventListener("click", comprobar);
 
-      function comprobar() {
+      function comprobar(e) {
+        e.preventDefault();
         let url = "arraylocalidades.php?localidad=" + localidad.value;
         fetch(url)
           // .a continuación, se ejecuta cuando el servidor remoto responde
