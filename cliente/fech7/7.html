@@ -5,30 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .hiden{display: none;}
+    </style>
   </head>
   <body>
     <form action="" method="post" id="formulario">
       <label for="teatro">Seleccione el teatro:</label>
       <select name="teatro" id="teatro"></select>
-      <p>
+      <p> 
+          <button type="button" id="pri"><<</button>
+        <button type="button" id="ant"><</button>
+        <button type="button" id="sig">></button>
+        <button type="button" id="ult">>></button><br />
         <label for="tit">Titulo:</label>
         <input type="text" name="tit" id="tit" /><br />
         <label for="pre">Precio:</label>
         <input type="text" name="pre" id="pre" /><br />
         <label for="sin">Sinopsis:</label>
         <input type="text" name="sin" id="sin" /><br />
-        <button type="button" id="Mostrar">Mostrar contenido</button><br />
-        <textarea id="area"> </textarea>
+        <label for="img">Imagen:</label>
+        <div type="text" name="img" id="img" ></div><br />
+     
       </p>
     </form>
 
     <script>
       document.addEventListener("DOMContentLoaded", programa);
 
-      function programa() {
+     function programa() {
         let arrteatros = new Array();
+        let arrcartelera= [];
         let tea = document.getElementById("teatro");
-        tea.addEventListener("change", mostrardatos);
+        let pri = document.getElementById("pri");
+        let ant = document.getElementById("ant");
+        let sig = document.getElementById("sig");
+        let ult = document.getElementById("ult");
+        let pos=0;
+        tea.addEventListener("change", cargardatos);
+        pri.addEventListener("click", primero);
+        ant.addEventListener("click", anterior);
+        sig.addEventListener("click", siguiente);
+        ult.addEventListener("click", ultimo);
 
         let fichero = "./json_teatro/teatros.json";
         let obras = "./json_teatro/cartelera.json";
@@ -52,17 +70,19 @@
               option.innerHTML = arrteatros[i];
               tea.append(option);
             }
-            mostrardatos();
+            cargardatos();
           })
           .catch(function (error) {
             alert("Se ha producido un error: " + error.message);
           });
 
-        function mostrardatos() {
+        function cargardatos() {
           let tit = document.getElementById("tit");
           let pre = document.getElementById("pre");
           let sin = document.getElementById("sin");
-
+          let img = document.getElementById("img");
+arrcartelera=[];
+pos=0;
           fetch(obras)
             .then(function (response) {
               if (response.ok) {
@@ -77,18 +97,81 @@
               }
             })
             .then(function (json) {
+              
               for (let i = 0; i < json.obras.length; i++) {
-                if (tea.value == json.obras[i].teatro) {
-                  tit.value = json.obras[i].titulo;
-                  pre.value = json.obras[i].precio;
-                  sin.value = json.obras[i].sinopsis;
-                }
-              }
+                if (tea.value == json.obras[i].teatro) {  
+                  arrcartelera.push(json.obras[i]);
+                }  
+            }
+            mostrardatos();
             })
             .catch(function (error) {
               alert("Se ha producido un error: " + error.message);
             });
         }
+
+        function botones(){
+          if(pos==0){
+          pri.classList.add("hiden");
+          ant.classList.add("hiden");
+          sig.classList.remove("hiden");
+          ult.classList.remove("hiden");
+          }else if(pos==arrcartelera.length-1){
+          ult.classList.add("hiden");
+          sig.classList.add("hiden");
+          pri.classList.remove("hiden");
+            ant.classList.remove("hiden");
+          }else{
+            pri.classList.remove("hiden");
+            ant.classList.remove("hiden");
+            sig.classList.remove("hiden");
+            ult.classList.remove("hiden");
+          }
+        }
+        function mostrardatos(){
+          pos=0;
+          botones();
+          tit.value = arrcartelera[pos].titulo;
+         pre.value = arrcartelera[pos].precio;
+         sin.value = arrcartelera[pos].sinopsis;
+         img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+        }
+        function primero(){
+         pos=0;
+         botones();
+         tit.value = arrcartelera[pos].titulo;
+         pre.value = arrcartelera[pos].precio;
+         sin.value = arrcartelera[pos].sinopsis;
+         img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+        } 
+        function anterior(){
+          if(pos!=0){
+        pos--;
+        botones();
+        tit.value = arrcartelera[pos].titulo;
+        pre.value = arrcartelera[pos].precio;
+        sin.value = arrcartelera[pos].sinopsis;
+        img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+        }
+        } 
+        function siguiente()
+        {
+          if(pos!=arrcartelera.length-1){
+            pos++;
+            botones();
+          tit.value = arrcartelera[pos].titulo;
+         pre.value = arrcartelera[pos].precio;
+           sin.value = arrcartelera[pos].sinopsis;
+         img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";}
+        } 
+        function ultimo(){
+          pos=arrcartelera.length-1;
+          botones();
+          tit.value = arrcartelera[pos].titulo;
+         pre.value = arrcartelera[pos].precio;
+           sin.value = arrcartelera[pos].sinopsis;
+         img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+        } 
       }
     </script>
   </body>
