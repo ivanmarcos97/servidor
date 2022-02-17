@@ -1,11 +1,11 @@
 <?php
 
 $db_host = "localhost";
-$db_usuario = "id18421386_ivan1";
-$db_clave = "Basededatos1/";
-$db_nombre = "id18421386_ciclos";
+$db_usuario = "root";
+$db_clave = "";
+$db_nombre = "ciclos";
 
-$conexion = @mysqli_connect($db_host, $db_usuario, $db_clave, $db_nombre);
+$conexion = @mysqli_connect($db_host, $db_usuario, $db_clave);
 if (mysqli_connect_errno()) {
     echo "Fallo en la conexi&#243n <br>";
     exit();

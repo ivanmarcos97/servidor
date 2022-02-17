@@ -17,13 +17,11 @@
         a {
             font-size: 2em;
             background-color: lightblue;
-            transition: background-color 10s;
             border: 3px solid black;
             border-radius: 10px;
             padding: 5px;
             text-decoration: none;
             color: black;
-
         }
 
         a:hover {
@@ -34,19 +32,6 @@
             height: 5.5rem;
             margin: 1rem;
             border-radius: 20%;
-            transform: rotate(0.5);
-        }
-
-        a:focus {
-            border: 4px solid blue;
-            background-color: red;
-            position: relative;
-            width: 5.5rem;
-            height: 5.5rem;
-            margin: 1rem;
-            border-radius: 20%;
-            transform: rotate(0.5);
-
         }
 
         table {
