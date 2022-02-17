@@ -1,25 +1,19 @@
 <?php
 
-class Usuario
-{
+class Usuario {
 	private $nom;
 	private $clave;
-	private $hora;
-	function __construct($n, $c, $h)
+	function __construct ($n,$c)
 	{
-		$this->nom = $n;
-		$this->clave = $c;
-		$this->hora = $h;
+		$this->nom=$n;
+		$this->clave=$c;
 	}
 	function __get($atrib)
 	// método mágico para acceder a un atributo fuera de la clase
 	{
-		return ($this->$atrib);
-	}
-	function horas()
-	{
-
-		$this->hora .=  "<br>" . date("H:i:s");
-		echo $this->hora;
-	}
+		return($this->$atrib);
+	}	
+	
 } //fin de la clase Usuario
+
+?>
