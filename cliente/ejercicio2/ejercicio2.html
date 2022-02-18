@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Alumnos matriculados en el mnodulo</h1>
+    <form action="" method="post" id="formulario">
+        <select name="ciclo" id="ciclo"></select>
+        <table id="tabla"></table>
+        <h2>Datos del alumno seleccionado:</h2>
+          <div type="text" name="alum" id="alum" ></div><br />
+       
+        </p>
+      </form>
+      <script>
+           document.addEventListener("DOMContentLoaded", programa);
+
+function programa() {
+   let arrmodulos = new Array();
+   let arralumnos= [];
+   let modu = document.getElementById("ciclo");
+
+   
+   modu.addEventListener("change", cargaralumnos);
+ 
+   let tabla = document.getElementById("tabla");
+   let fichero = "./modulos.json";
+   let alumnos = "./alumnos.json";
+  
+   fetch(fichero)
+     .then(function (response) {
+       if (response.ok) {
+         return response.json();
+       } else {
+         throw new error(
+           "Error " +
+             response.status +
+             " al intentar acceder al fichero " +
+             fichero
+         );
+       }
+     })
+     .then(function (json) {
+       for (let i = 0; i < json.length; i++) {
+         arrmodulos[i] = json[i];
+         let option = document.createElement("option");
+         option.innerHTML = arrmodulos[i];
+         ciclo.append(option);
+       }
+       cargaralumnos();
+     })
+     .catch(function (error) {
+       alert("Se ha producido un error: " + error.message);
+     });
+
+   function cargaralumnos() {
+    arralumnos=[];
+    tabla.innerHTML="";
+
+     fetch(alumnos)
+       .then(function (response) {
+         if (response.ok) {
+           return response.json();
+         } else {
+           throw new error(
+             "Error " +
+               response.status +
+               " al intentar acceder al fichero " +
+               obras
+           );
+         }
+       })
+       .then(function (json) {
+         
+         for (let i = 0; i < 5; i++) {
+           if (modu.value == json[i].modulo) {  
+             arralumnos.push(json[i]);
+           }  
+       }
+       mostrardatos();
+       })
+       .catch(function (error) {
+         alert("Se ha producido un error: " + error.message);
+       });
+   }
+   function mostrardatos(){
+    arrmodulos=[];
+    
+
+     
+    
+    tabla.innerHTML="";
+
+    for (let i = 0; i < arralumnos.length; i++) {
+      let fila = document.createElement("tr");
+      tabla.append(fila);
+      let celdanif = document.createElement("td");
+      let celdanombre = document.createElement("td");
+      let celdamodulo = document.createElement("td");
+      let anumat=document.createElement("td");
+      let cargardatos=document.createElement("td");
+let boton;
+boton = "<button id='anumatri'>Anular maticula</button>"
+
+      
+      
+      celdanif.append(arralumnos[i].NIF);
+      celdanombre.append(arralumnos[i].nombre);
+      celdamodulo.append(arralumnos[i].modulo);
+      anumat.innerHTML= boton;
+
+      fila.append(celdanif);
+      fila.append(celdanombre);
+      fila.append(celdamodulo);
+     fila.append(anumat);
+
+      //alert(objeto.fechas[0].titulo); // {"name": "iliakan", isAdmin: true}
+    }
+    
+   }
+/*
+   function botones(){
+     if(pos==0){
+     pri.classList.add("hiden");
+     ant.classList.add("hiden");
+     sig.classList.remove("hiden");
+     ult.classList.remove("hiden");
+     }else if(pos==arrcartelera.length-1){
+     ult.classList.add("hiden");
+     sig.classList.add("hiden");
+     pri.classList.remove("hiden");
+       ant.classList.remove("hiden");
+     }else{
+       pri.classList.remove("hiden");
+       ant.classList.remove("hiden");
+       sig.classList.remove("hiden");
+       ult.classList.remove("hiden");
+     }
+   }
+  
+   function primero(){
+    pos=0;
+    botones();
+    tit.value = arrcartelera[pos].titulo;
+    pre.value = arrcartelera[pos].precio;
+    sin.value = arrcartelera[pos].sinopsis;
+    img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+   } 
+   function anterior(){
+     if(pos!=0){
+   pos--;
+   botones();
+   tit.value = arrcartelera[pos].titulo;
+   pre.value = arrcartelera[pos].precio;
+   sin.value = arrcartelera[pos].sinopsis;
+   img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+   }
+   } 
+   function siguiente()
+   {
+     if(pos!=arrcartelera.length-1){
+       pos++;
+       botones();
+     tit.value = arrcartelera[pos].titulo;
+    pre.value = arrcartelera[pos].precio;
+      sin.value = arrcartelera[pos].sinopsis;
+    img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";}
+   } 
+   function ultimo(){
+     pos=arrcartelera.length-1;
+     botones();
+     tit.value = arrcartelera[pos].titulo;
+    pre.value = arrcartelera[pos].precio;
+      sin.value = arrcartelera[pos].sinopsis;
+    img.innerHTML="<img src='./"+arrcartelera[pos].imagen+" '/>";
+   } */
+ }
+</script>
+</body>
+</html>
+      </script>
+</body>
+
+</html>
