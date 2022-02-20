@@ -4,11 +4,10 @@ if (isset($_POST['enviar'])) {
     if (!isset($_COOKIE['usuariosautorizados'])) {
         $acceso = 1;
         $usuario = $_POST['usuario'];
-        if ($usuario == $usuarios[0] || $usuario == $usuarios[1]) {
-            $usuarioautorizado = $usuario;
-            $usuarioautorizado = $usuarioautorizado . "," . $acceso . ";";
+        if (acceso($usuario, $usuarios) == true) {
+            $usuarioautorizado = $usuario . "," . $acceso . ";";
 
-            setcookie('usuariosautorizados', $usuarioautorizado, time() + 60);
+            setcookie('usuarios', $usuarioautorizado, time() + 60);
             header("location: principal.php");
         } else {
             echo "Usuario no autorizado";
@@ -18,24 +17,27 @@ if (isset($_POST['enviar'])) {
 
         if (!empty($_POST['usuario'])) {
             $usuarioautorizado;
-            $usuario = $_COOKIE["usuariosautorizados"];
-            $usuarioyacces = explode(";", $usuario);
-            foreach ($usuarioyacces as $usu) {
+            $usuario = explode(";", $_COOKIE["usuariosautorizados"]);
+            echo $usuario[1];
+            foreach ($usuario as $usu) {
                 $uya = explode(",", $usu);
-                if ($uya[0] == $usuarios[0] || $uya[0] == $usuarios[1]) {
-                    $usuarioautorizado = $uya[0];
-                    $acceso = $uya[1] + 1;
-                    $usuarioautorizado = $usuarioautorizado . "," . $acceso . ";";
+            }
+            echo $uya[1];
+            if (acceso($uya[0], $usuarios) == true) {
+                $usuarioautorizado = $uya[0];
+                $acceso = $uya[1] + 1;
 
-                    setcookie('usuariosautorizados', $usuarioautorizado, time() + 60);
-                    header("location: principal.php");
-                } else {
-                    echo "Usuario no autorizado";
-                }
+                $usuarioautorizado .= $usuarioautorizado . "," . $acceso . ";";
+                echo $acceso;
+                setcookie('usuariosautorizados', $usuarioautorizado, time() + 60);
+                // header("location: principal.php");
+            } else {
+                echo "Usuario no autorizado";
             }
         }
     }
 }
+
 
 ?>
 <!DOCTYPE html>

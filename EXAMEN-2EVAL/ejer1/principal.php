@@ -1,14 +1,27 @@
 <?php
-$usuario = "";
-$acess = "";
-$usu = explode(";", $_COOKIE["usuariosautorizados"]);
-foreach ($usu as $user) {
-    $u = explode(",", $user);
-    echo "Bienvenido : " . $u[0] . "<br>";
-    echo "Acesso: " . $u[1];
+if (isset($_COOKIE['usuarios'])) {
+    $usuario = "";
+    $acess = "";
+    $usu = explode(";", $_COOKIE["usuarios"]);
+    foreach ($usu as $user) {
+        $u = explode(",", $user);
+        echo "Bienvenido : " . $u[0] . "<br>";
+        echo "Acesso: " . $u[1];
+        $u1 = $u[0];
+        $u2 = $u[1];
+    }
+    $usuarioautorizado = $u1 . "," . $u2 . ";";
+    setcookie('usuariosautorizados', $usuarioautorizado, time() + 60);
+} else {
+    $usuario = "";
+    $acess = "";
+    $usu = explode(";", $_COOKIE["usuariosautorizados"]);
+    foreach ($usu as $user) {
+        $u = explode(",", $user);
+        echo "Bienvenido de nuevo : " . $u[0] . "<br>";
+        echo "Acesso: " . $u[1];
+    }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
