@@ -10,7 +10,7 @@ class Opo
 
 
 
-        $sql =  "Insert into oposiciones(cod_op,notap,notat) values ($cod_op,$notap,$notat
+        $sql =  "Insert into oposiciones(cod_op,notap,notat) values ($cod_op,'$notap','$notat'
         )";
 
         $resultado = $conect->query($sql);
