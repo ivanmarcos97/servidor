@@ -111,7 +111,13 @@ pos=0;
         }
 
         function botones(){
-          if(pos==0){
+          if(pos==0 && arrcartelera.length==1){
+            pri.classList.add("hiden");
+          ant.classList.add("hiden");
+          ult.classList.add("hiden");
+          sig.classList.add("hiden");
+          }
+          else if(pos==0){
           pri.classList.add("hiden");
           ant.classList.add("hiden");
           sig.classList.remove("hiden");
