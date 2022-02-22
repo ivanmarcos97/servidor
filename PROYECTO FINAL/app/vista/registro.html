@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <title>Login</title>
+  </head>
+
+  <body>
+    <header>
+      <ul>
+        <li id="logo">
+          <a href="../index.html"
+            ><img alt="logo" src="../imagenes/logoi+gen.png"
+          /></a>
+        </li>
+        <li id="leng">
+          <select name="idioma" id="idioma">
+            <option value="Español">Español</option>
+            <option value="Ingles">Ingles</option>
+          </select>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <div id="centro">
+        <h1>Registro de Nuevo Usuario</h1>
+        <form
+          action="../controlador/control_insertar_usuarios.php"
+          method="post"
+        >
+          <div class="contenedor">
+            <label>Nombre de usuario : </label>
+            <input
+              type="text"
+              placeholder="Introduce el usuario"
+              name="usuario"
+              required
+            />
+            <br />
+            <label>Contraseña : </label>
+            <input
+              type="password"
+              placeholder="Introduce la Contraseña"
+              name="contra"
+              required
+            /><br />
+            <label>Nombre : </label>
+            <input
+              type="text"
+              placeholder="Introduce su nombre"
+              name="nombre"
+              required
+            />
+            <br />
+            <label>Apellidos : </label>
+            <input
+              type="text"
+              placeholder="Introduce sus apellidos"
+              name="apellidos"
+              required
+            />
+            <br />
+            <label>Email : </label>
+            <input
+              type="email"
+              placeholder="Introduce tu correo"
+              name="email"
+              required
+            />
+            <br />
+            <label>Telefono : </label>
+            <input
+              type="tel"
+              placeholder="Introduce su telefono"
+              name="telefono"
+              required
+            />
+            <br />
+            <label>Direccion : </label>
+            <input
+              type="text"
+              placeholder="Introduce su Direccion"
+              name="direccion"
+              required
+            />
+            <br />
+            <input type="submit" name="registro" value="Registrarse"></input><br />
+           
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <ul>
+        <li id="contac"><a href="#">Contactos</a></li>
+        <li id="ayu"><a href="#">Ayuda</a></li>
+        <li id="patro"><a href="#">Patrocinadores</a></li>
+        <li id="redes">
+          <a href="#" class="wp"> </a>
+          <a href="#" class="ig"> </a>
+          <a href="#" class="fb"> </a>
+        </li>
+      </ul>
+      <p>&copy; Iván Marcos</p>
+    </footer>
+  </body>
+</html>
