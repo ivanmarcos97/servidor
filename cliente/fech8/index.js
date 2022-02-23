@@ -24,13 +24,28 @@ function cargaViajes() {
       }
     });
 }
-let tabla = document.getElementById("idViajes");
-tabla.addEventListener("click", seleccionarviaje);
-function seleccionarviaje(evento) {
-  let target = evento.target;
-  if (target.tagName != "TR") {
-    return;
+document.addEventListener("DOMContentLoaded", programa);
+
+function programa() {
+  let tabla = document.getElementById("idViajes");
+  let viajeseleccionado;
+  tabla.addEventListener("click", seleccionarviaje);
+  function seleccionarviaje(evento) {
+    let target = evento.target;
+    if (target.tagName != "TD") {
+      return;
+    }
+    let tr = target.closest("tr");
+    let trs = tabla.querySelectorAll("tr");
+    for (let i = 0; i < trs.length; i++) {
+      trs[i].style.backgroundColor = "white";
+    }
+    tr.style.backgroundColor = "yellow";
+    viajeseleccionado = tr;
+    let comprar = document.getElementById("comprar");
+    let devolver = document.getElementById("devolver");
+
+    comprar.disabled = false;
+    devolver.disabled = false;
   }
-  let th = target;
-  th.style.backgroundColor = "yellow";
 }
