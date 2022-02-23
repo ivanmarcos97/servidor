@@ -51,35 +51,5 @@
       <button id="idComprar" onclick="ComprarViaje();">Comprar de viaje</button>
     </div>
     <div id="todosViajes"></div>
-
-    <script>
-      fetch("viaje.json")
-        // .a continuación, se ejecuta cuando el servidor remoto responde
-        .then(function (response) {
-          // response.text() devuelve una nueva promesa que se resuelve con el texto de respuesta completo
-          // cuando se carga
-          return response.json();
-        })
-        .then(function (objeto) {
-          // ...y aquí está el contenido del archivo remoto
-          let tabla = document.getElementById("tabla");
-          for (let i = 0; i < 3; i++) {
-            let fila = document.createElement("tr");
-            tabla.append(fila);
-            let celdati = document.createElement("td");
-            let celdafe = document.createElement("td");
-            let celdate = document.createElement("td");
-            celdati.append(objeto.fechas[i].titulo);
-            celdafe.append(objeto.fechas[i].fecha);
-            celdate.append(objeto.fechas[i].texto);
-
-            fila.append(celdati);
-            fila.append(celdafe);
-            fila.append(celdate);
-
-            //alert(objeto.fechas[0].titulo); // {"name": "iliakan", isAdmin: true}
-          }
-        });
-    </script>
   </body>
 </html>

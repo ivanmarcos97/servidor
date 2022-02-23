@@ -6,4 +6,5 @@ require_once("../modelo/model_class_usuarios.php");
 $usuario = new Usuario();
 $result = $usuario->query_insertar_usuario($c);
 $datos =  $result;
+
 require_once("../vista/insercion.php");
