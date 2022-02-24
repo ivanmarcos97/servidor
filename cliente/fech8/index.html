@@ -3,38 +3,23 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>EXAMEN VIAJES 17-18</title>
-
+<style>
+  .error{border: red 1px solid;}
+</style>
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body onload="cargaViajes();">
     <div>
       <table border="1" id="idTiposViajes" align="center"></table>
-      <input
-        type="button"
-        value="Mostar viajes Comprados"
-        id="mostrar"
-        onclick="MostrarViajes();"
-      />
+      <input type="button" value="Mostar viajes Comprados" id="mostrar" />
     </div>
     <br />
     <div id="idDatosvIAJES">
       <table border="1" id="idViajes" align="center"></table>
 
       <p>
-        <input
-          type="button"
-          value="Comprar"
-          id="comprar"
-          onclick="cargarFormulario();"
-          disabled
-        />
-        <input
-          type="button"
-          value="Devolver Viaje"
-          id="devolver"
-          onclick="DevolverViaje();"
-          disabled
-        />
+        <input type="button" value="Comprar" id="comprar" disabled />
+        <input type="button" value="Devolver Viaje" id="devolver" disabled />
       </p>
     </div>
     <div id="formularioCompra">
@@ -48,7 +33,7 @@
       <label>Precio:</label><input type="text" id="idPrecio" disabled /><br />
       <label>Numero tarjeta:</label><input type="text" id="idnumero" /><br />
       <label>CSV:</label><input type="text" id="idcsv" /><br />
-      <button id="idComprar" onclick="ComprarViaje();">Comprar de viaje</button>
+      <button id="idComprar" ">Comprar de viaje</button>
     </div>
     <div id="todosViajes"></div>
   </body>

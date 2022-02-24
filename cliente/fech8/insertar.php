@@ -16,9 +16,20 @@ $pass = "";
 $conexion = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_query($conexion, "SET NAMES 'utf8'");
 //
-$id = $_POST["id"];
-$sql = "DELETE FROM `viajescomprados` WHERE id=" . $id;
-if ($conexion->query($sql) === TRUE) {
+
+
+$nombre = $_POST["nombre"];
+$descripción = $_POST["descripcion"];
+$Email = $_POST["email"];
+$numero = $_POST["numero"];
+$Precio = $_POST["precio"];
+$tarjeta = $_POST["tarjeta"];
+$CSV = $_POST["csv"];
+
+$sql = "Insert into viajescomprados(nombre,descripcion,email,num,precio,numerotarjeta,csv) values ('$nombre','$descripción','$Email',$numero,$Precio,$tarjeta,$CSV)";
+
+
+if (mysqli_query($conexion, $sql) === TRUE) {
     echo "OK";
 } else {
     echo "NO";
