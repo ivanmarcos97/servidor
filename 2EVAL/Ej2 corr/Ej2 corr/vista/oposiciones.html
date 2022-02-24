@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPOSICIONES</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table align="center" border="1">
+        <tr>
+            <td colspan="3" align="center">
+                OPOSICIONES
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form action="./control/controler_Consulta.php" method="POST">
+                    <label for="consultar"></label>
+                    <select name="consultar" id="consultar">
+                        <option value="plaza">Con plaza</option>
+                        <option value="bolsa">Bolsa de trabajo</option>
+                        <option value="no">No aptos</option>
+                    </select>
+                    <input type="submit" name="Continua" value="continuar">
+                </form>
+            </td>
+
+            <td>
+                <form action="./vista/insertar.html" method="POST">
+                    <input type="submit" name="insertar" value="insertar">
+                </form>
+            </td>
+            <td>
+                <form action="./vista/borrar.html" method="POST">
+                    <input type="submit" name="borrar" value="borrar">
+                </form>
+            </td>
+
+        </tr>
+    </table>
+
+</body>
+
+</html>
